@@ -1,10 +1,14 @@
 # simple script to get opengenus article links from its sitemap
+# update populate a html template with the data
 
-import requests, json
+import sys, json, re
+import requests
 from bs4 import BeautifulSoup
 
 
 SITEMAP_URL = "https://iq.opengenus.org/sitemap-posts.xml"
+TEMPLATE_PATH = "./random_template.html"
+ACTUAL_FILE_PATH = "../random.html"
 
 def get_links():
     xml = requests.get(SITEMAP_URL).text
@@ -17,13 +21,41 @@ def get_links():
     urls = [url.get_text() for url in urls]
     return urls
 
-def dump_to_json(article_links, filepath="../articles.json"):
+def convert_articlelinks_to_json_string(article_links):
     articles = {
     "length":len(article_links),
     "links": article_links
     }
+    return json.dumps(articles, indent=2)
 
-    with open(filepath, "w") as file:
-        json.dump(articles, file, indent=3)
+def update_html(articles, template_name=TEMPLATE_PATH, file_path=ACTUAL_FILE_PATH):
+    """ replaces the article slug in the template with the real json string 
+        and updates the actual html
+    """
+    
+    newcontent = ""
+    with open(template_name) as file:
+        newcontent = file.read()
+    
+    newcontent = re.sub("{{\s*articles\s*}}", articles, newcontent)
+    
+    with open(file_path, "w") as file:
+        file.write(newcontent)
 
-dump_to_json(get_links())
+def main():
+    # only 1 extra argument is allowed
+    valid_args = ["--update", "--output"]
+    if len(sys.argv[1:]) == 1 and sys.argv[1] in valid_args:
+        links = get_links()
+        articles = convert_articlelinks_to_json_string(links)
+        if sys.argv[1] == "--update":
+            update_html(articles)
+        if sys.argv[1] == "--output":
+            print(articles)
+    else:
+        print(f"invalid usage, accept commands are {valid_args}")
+
+
+if __name__ == "__main__":
+    main()
+    

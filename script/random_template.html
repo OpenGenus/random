@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        // articles will be dynamically inserted
+        // articles is a object with keys; length(int) and links(array oif urls)
+		const articles = {{  articles  }}
+
+	// randomly select an article and redirect to there
+	const max_num_articles = articles.length
+	let random_index = Math.floor(Math.random() * (max_num_articles + 1))
+	window.open(articles.links[random_index],"_self")
+		
+	</script>
+</head>
+<body></body>
+</html>
