@@ -2,10 +2,37 @@
 <html lang="en">
 
 <head>
+	
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
+	<meta name="description" content="redirect to random opengenus articles" />
+	<meta name="keywords"
+		content="random, redirect, articles, " />
+	<meta name="author" content="thompson" />
+	<meta name="HandheldFriendly" content="True" />
+	<meta property="og:site_name" content="OpenGenus IQ: Computing Expertise &amp; Legacy" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="random" />
+	<meta property="og:description"
+		content="redirects to random opengenus articles" />
+	<meta property="og:url" content="https://iq.opengenus.org/random/" />
+	<meta property="article:published_time" content="2021-12-19T08:57:05.000Z" />
+	<meta property="article:modified_time" content="2021-12-19T08:57:05.000Z"/>
+	<meta property="article:tag" content="articles" />
+	
+	<meta property="article:publisher" content="https://www.facebook.com/opengenus" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Random" />
+	<meta name="twitter:description" content="Number of islands algorithm visualization, counting islands on a graph" />
+	<meta name="twitter:url" content="https://iq.opengenus.org/random/" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Thompson Mina" />
+	<meta name="twitter:label2" content="Filed under" />
+	<meta name="twitter:data2" content="Random" />
+	<meta name="twitter:site" content="@OpenGenus" />
+	<title>Random</title>
+	<script>
         // articles will be dynamically inserted
         // articles is a object with keys; length(int) and links(array oif urls)
 		const articles = {
@@ -2054,12 +2081,10 @@
     "https://iq.opengenus.org/bogo-sort/"
   ]
 }
-
 	// randomly select an article and redirect to there
 	const max_num_articles = articles.length
 	let random_index = Math.floor(Math.random() * (max_num_articles + 1))
-	window.open(articles.links[random_index],"_self")
-		
+	window.open(articles.links[random_index],"_self")	
 	</script>
 </head>
 <body></body>

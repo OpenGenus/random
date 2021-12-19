@@ -53,7 +53,7 @@ def main():
         if sys.argv[1] == "--output":
             print(articles)
     else:
-        print(f"invalid usage, accept commands are {valid_args}")
+        print(f"invalid usage, accepted commands are {valid_args}")
 
 
 if __name__ == "__main__":
